@@ -1,4 +1,4 @@
-from utils import print_last_operations,load_json_from_file, mask_card_number, mask_account_number
+from utils import load_json_from_file, mask_card_number, mask_account_number
 
 def print_last_operations(operations):
     """
@@ -8,7 +8,7 @@ def print_last_operations(operations):
     sorted_operations = sorted(executed_operations, key=lambda op: op["date"], reverse=True)
 
     for operation in sorted_operations[:5]:
-        date = operation["date"][:10]  # Получаем только дату (без времени)
+        date = operation["date"][:10]
         description = operation["description"]
         from_account = mask_account_number(operation.get("from", ""))
         to_account = mask_account_number(operation["to"])
